@@ -25,7 +25,16 @@ const allowedOrigins = ['http://localhost:5173']
 //Middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({origin: allowedOrigins, credentials: true}));
+// app.use(cors({origin: allowedOrigins, credentials: true}));
+
+app.use(cors({
+  origin: [
+    "https://eventra-k tqv3qa0l-saloni-s-projects-06b224dd.vercel.app",
+    "https://eventra-omega-plum.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
+}));
 
 
 //API endpoints
