@@ -20,12 +20,23 @@ const port = process.env.PORT || 4000
 connectDB();
 
 //Allowed frontend origins
-const allowedOrigins = ['http://localhost:5173']
+// const allowedOrigins = ['http://localhost:5173']
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://eventra-ktqv3qa0l-saloni-s-projects-06b224dd.vercel.app",
+  "https://eventra-omega-plum.vercel.app"
+];
 
 //Middlewares
 app.use(express.json());
 app.use(cookieParser());
 // app.use(cors({origin: allowedOrigins, credentials: true}));
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
 
 app.use(cors({
   origin: [
