@@ -29,7 +29,7 @@ app.use(cookieParser());
 
 app.use(cors({
   origin: [
-    "https://eventra-k tqv3qa0l-saloni-s-projects-06b224dd.vercel.app",
+    "https://eventra-ktqv3qa0l-saloni-s-projects-06b224dd.vercel.app",
     "https://eventra-omega-plum.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
