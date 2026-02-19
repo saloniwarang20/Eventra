@@ -19,9 +19,6 @@ const port = process.env.PORT || 4000
 //MongoDB connection
 connectDB();
 
-//Allowed frontend origins
-// const allowedOrigins = ['http://localhost:5173']
-
 const allowedOrigins = [
   "http://localhost:5173",
   "https://eventra-ktqv3qa0l-saloni-s-projects-06b224dd.vercel.app",
@@ -41,8 +38,6 @@ app.use((req, res, next) => {
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://eventra-ktqv3qa0l-saloni-s-projects-06b224dd.vercel.app",
-    "https://eventra-omega-plum.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
