@@ -132,10 +132,17 @@ export const cancelEvent = async (req, res) => {
       return res.json({ success: false, message: "Event not found" });
 
     // ✅ Allow only event creator to cancel
-    if (event.createdBy.toString() !== req.userId) {
+    // Convert both to strings and compare
+    const eventCreatorId = String(event.createdBy);
+    const currentUserId = String(req.userId);
+    
+    console.log("Cancel Request - Creator ID:", eventCreatorId, "User ID:", currentUserId, "Match:", eventCreatorId === currentUserId);
+    console.log("Creator object type:", event.createdBy.constructor.name, "User object type:", req.userId.constructor.name);
+
+    if (eventCreatorId !== currentUserId) {
       return res.json({
         success: false,
-        message: "Access denied. Only the coordinator can perform this action.",
+        message: "Access denied. Only the co-ordinator can perform this action.",
       });
     }
 
@@ -144,6 +151,7 @@ export const cancelEvent = async (req, res) => {
 
     res.json({ success: true, message: "Event cancelled successfully." });
   } catch (error) {
+    console.error("Cancel error:", error.message);
     res.json({ success: false, message: error.message });
   }
 };

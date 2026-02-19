@@ -111,11 +111,12 @@ const Dashboard = () => {
 
         alert("Event marked as cancelled ✅");
       } else {
+        console.error("Cancel error:", res.data);
         alert(res.data.message || "Failed to cancel event ❌");
       }
     } catch (error) {
       console.error("Error cancelling event:", error);
-      alert("Something went wrong while cancelling the event ❌");
+      alert(error.response?.data?.message || error.message || "Something went wrong while cancelling the event ❌");
     }
   };
 

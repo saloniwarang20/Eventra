@@ -40,6 +40,7 @@ app.use((req, res, next) => {
 
 app.use(cors({
   origin: [
+    "http://localhost:5173",
     "https://eventra-ktqv3qa0l-saloni-s-projects-06b224dd.vercel.app",
     "https://eventra-omega-plum.vercel.app"
   ],

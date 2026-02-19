@@ -41,6 +41,19 @@ const EventInfo = ({ eventId }) => {
     if (eventId && backendUrl) fetchEvent();
   }, [eventId, backendUrl]);
 
+  // ✅ Calculate actual event status based on dates
+  const getEventStatus = () => {
+    if (!event) return "unknown";
+    const now = new Date();
+    const start = new Date(event.startDate);
+    const end = new Date(event.endDate);
+    
+    if (event.status === "cancelled") return "cancelled";
+    if (end < now) return "past";
+    if (start > now) return "upcoming";
+    return "ongoing";
+  };
+
   // ✅ Add Volunteer
   const handleAddVolunteer = async (e) => {
     e.preventDefault();
@@ -122,7 +135,24 @@ const EventInfo = ({ eventId }) => {
             <strong>Type:</strong> {event.type}
           </div>
           <div>
-            <strong>Status:</strong> {event.status}
+            <strong>Coordinator:</strong> {event.createdBy?.name || "Not specified"}
+          </div>
+          <div>
+            <strong>Coordinator Email:</strong> {event.createdBy?.email || "Not specified"}
+          </div>
+          <div>
+            <strong>Status:</strong> 
+            <span className={`ml-2 capitalize font-medium ${
+              getEventStatus() === "past" 
+                ? "text-gray-500" 
+                : getEventStatus() === "cancelled" 
+                ? "text-red-600" 
+                : getEventStatus() === "ongoing" 
+                ? "text-green-600" 
+                : "text-orange-500"
+            }`}>
+              {getEventStatus()}
+            </span>
           </div>
           <div>
             <strong>Start Date:</strong>{" "}
