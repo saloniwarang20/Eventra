@@ -21,8 +21,7 @@ connectDB();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://eventra-ktqv3qa0l-saloni-s-projects-06b224dd.vercel.app",
-  "https://eventra-omega-plum.vercel.app"
+  "https://eventra-sage-ten.vercel.app"
 ];
 
 //Middlewares
@@ -36,9 +35,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-  ],
+  origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
 }));
