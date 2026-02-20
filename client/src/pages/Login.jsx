@@ -93,7 +93,7 @@ const Login = () => {
 
           <p onClick={()=>navigate('/reset-password')} className='text-orange-400 mb-4 cursor-pointer'>Forgot Password?</p>
 
-          <button className='w-full rounded-full py-2.5 bg-gradient-to-r from-orange-500 to-rose-900 text-white font-medium'>{state}</button>
+          <button className='w-full rounded-full py-2.5 bg-gradient-to-r from-orange-500 to-rose-900 text-white font-medium cursor-pointer'>{state}</button>
 
         </form>
 
